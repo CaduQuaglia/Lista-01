@@ -241,23 +241,31 @@ ______
 Explique como funciona a herança nesse contexto e como você implementaria a modificação do método na classe `Livro`.
 
 ```javascript
+// Classe Produto
 class Produto{
     constructor(nome, preco){
+        // Define os atributos da classe que serão passados como parâmetros ao instanciá-la
         this.nome = nome;
         this.preco = preco;
+
+        // Define desconto padrão de 10% em decimal como um atributo da classe ao instanciá-la
         this.desconto = 0.1;
     }
 
     calcularDesconto(){
+        // Atribui preço depois do desconto ao atributo de preço
         this.preco -= this.preco*this.desconto;
     }
 }
 
+// Classe Livro que herda a classe Produto
 class Livro extends Produto{
+    // Ao inicializar a instancia de Livro, passa os parâmetros ao construtor de Produto
     constructor(nome, preco){
         super(nome, preco)
     }
 
+    // Sobrescreve o método de desconto alterando o decimal de desconto e chamando o método de cálculo da classe pai 
     calcularDesconto(){
         this.desconto = 0.2;
         super.calcularDesconto()
